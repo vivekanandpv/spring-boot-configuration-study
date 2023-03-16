@@ -5,8 +5,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SampleServiceImplementation implements SampleService {
-    @Value("${app.message}")
-    private String message;
+    private final String message;
+
+    public SampleServiceImplementation(@Value("${app.message}") String message) {
+        this.message = message;
+    }
 
     @Override
     public String getMessage() {
